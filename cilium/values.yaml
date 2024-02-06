@@ -1,0 +1,11 @@
+kubeProxyReplacement: true
+
+l2announcements:
+  enabled: true
+
+externalIPs:
+  enabled: true
+
+l2podAnnouncements:
+  enabled: true
+  interface: "eth0"

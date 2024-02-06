@@ -1,0 +1,17 @@
+image:
+  registry: docker.io
+  repository: bitnami/postgresql
+  tag: 16.1.0-debian-11-r9
+  pullPolicy: IfNotPresent
+  debug: false
+auth:
+  enablePostgresUser: true
+  postgresPassword: "xxx"
+  username: "qxoo"
+  password: "xxx"
+  replicationUsername: repl_user
+primary:
+  service:
+    type: LoadBalancer
+  persistence:
+    existingClaim: "pg-pvc"

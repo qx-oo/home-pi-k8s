@@ -1,0 +1,77 @@
+image:
+  repository: nextcloud
+  pullPolicy: IfNotPresent
+  # pullSecrets:
+  #   - myRegistrKeySecretName
+
+nameOverride: "nextcloud"
+fullnameOverride: "nextcloud"
+
+replicaCount: 1
+
+
+phpClientHttpsFix:
+  enabled: false
+  protocol: https
+
+nextcloud:
+  host: nextcloud.qxoo.xyz
+  username: xxx
+  password: xxx
+  containerPort: 80
+  datadir: /var/www/html/data
+  my.config.php: true
+  configs:
+    my.config.php: |-
+      <?php
+      $CONFIG = array (
+        'trusted_domains' => array(
+          0 => 'localhost',
+          1 => '192.168.31.215',
+          2 => 'nextcloud.qxoo.xyz',
+          3 => 'internal.nextcloud.qxoo.xyz', 
+        ),
+      );
+    CAN_INSTALL: ""
+
+internalDatabase:
+  enabled: false
+
+externalDatabase:
+  enabled: true
+
+  ## Supported database engines: mysql or postgresql
+  type: postgresql
+
+  ## Database host
+  host: 192.168.31.101
+
+  ## Database user
+  user: xxx
+
+  ## Database password
+  password: "xxx"
+
+  ## Database name
+  database: nextcloud
+
+
+#service:
+#  type: LoadBalancer
+#  loadBalancerIP: 192.168.31.215
+
+persistence:
+  enabled: true
+  existingClaim: nextcloud
+  nextcloudData:
+    enabled: true
+    existingClaim: nextcloud-data
+
+# nginx:
+#  enabled: true
+
+livenessProbe:
+ enabled: false
+
+readinessProbe:
+ enabled: false

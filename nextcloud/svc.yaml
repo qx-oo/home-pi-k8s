@@ -1,0 +1,24 @@
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: nextcloud-lb
+  namespace: nextcloud
+  labels:
+    app.kubernetes.io/component: app
+    app.kubernetes.io/instance: nextcloud
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: nextcloud
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80
+  selector:
+    app.kubernetes.io/component: app
+    app.kubernetes.io/instance: nextcloud
+    app.kubernetes.io/name: nextcloud
+  type: LoadBalancer
+  loadBalancerIP: 192.168.31.215
+status:
+  loadBalancer: {}

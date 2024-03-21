@@ -16,3 +16,7 @@ sudo cp cilium /usr/local/bin/cilium
 # kubectl apply -f policy.yaml
 # kubectl apply -f ip-pool.yaml
 ```
+
+### 注意
+
+因为集群没有使用kube-proxy, 需要配置k8sServiceHost, k8sServicePort

@@ -105,7 +105,7 @@ sudo kubeadm join 192.168.31.101:6443 --v=5 --token xxx --discovery-token-ca-cer
 ```
 
 ```
-# cert manager
+# cert manager (不进行安装)
 helm repo add jetstack https://charts.jetstack.io
 helm install  cert-manager jetstack/cert-manager --namespace cert-manager   --create-namespace  --version v1.14.0
 # disable cert-manager validation

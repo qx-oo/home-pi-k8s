@@ -27,7 +27,7 @@ nextcloud:
       $CONFIG = array (
         'trusted_domains' => array(
           0 => 'localhost',
-          1 => '192.168.31.215',
+          1 => '10.64.1.115',
           2 => 'nextcloud.qxoo.xyz',
           3 => 'internal.nextcloud.qxoo.xyz', 
         ),
@@ -44,10 +44,10 @@ externalDatabase:
   type: postgresql
 
   ## Database host
-  host: 192.168.31.101
+  host: 10.64.1.2
 
   ## Database user
-  user: xxx
+  user: nextcloud
 
   ## Database password
   password: "xxx"
@@ -58,7 +58,7 @@ externalDatabase:
 
 #service:
 #  type: LoadBalancer
-#  loadBalancerIP: 192.168.31.215
+#  loadBalancerIP: 10.64.1.115
 
 persistence:
   enabled: true

@@ -4,5 +4,5 @@ metadata:
   name: "ip-pool"
 spec:
   blocks:
-  - start: "192.168.31.201"
-    stop: "192.168.31.220"
+  - start: "10.64.1.101"
+    stop: "10.64.1.200"

@@ -31,12 +31,31 @@ sudo apt install nfs-common
 
 # nfs git: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner.git
 
-kubectl create ns nfs
-kubectl apply -f nfs-rbac.yaml
-kubectl apply -f nfs.yaml
-kubectl apply -f class.yaml
-```
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nfs-pv
+spec:
+  capacity:
+    storage: 200Gi
+  accessModes:
+    - ReadWriteMany
+  nfs:
+    path: /mnt/k8s/nfspv
+    server: 10.64.1.2
+EOF
 
-```bash
-sudo crictl -c ~/.crictl.yaml <cmd>
+kubectl apply -f - <<EOF
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nfs-pvc
+spec:
+    accessModes:
+        - ReadWriteMany
+    resources:
+        requests:
+        storage: 200Gi
+EOF
 ```

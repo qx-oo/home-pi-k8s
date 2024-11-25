@@ -34,3 +34,18 @@ Environment="NO_PROXY=localhost,127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0
 sudo systemctl daemon-reload
 sudo systemctl restart containerd.service
 ```
+
+### pi5开启pcie接电启动
+
+```
+sudo vi /boot/firmware/config.txt
+    
+        dtparam=pciex1
+
+sudo rpi-eeprom-config --edit
+
+        BOOT_ORDER=0xf416
+        PCIE_PROBE=1
+
+sudo reboot
+```
